@@ -32,7 +32,7 @@ const UserMenu = () => {
                         cursor-pointer
                     "
                 >
-                    Match your home
+                    Match your haven
                 </div>
                 <div
                     onClick={toggleOpen}  
