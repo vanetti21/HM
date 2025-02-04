@@ -3,8 +3,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 
 export const metadata = {
-  title: "Airbnb",
-  description: "Airbnb Clone",
+  title: "Haven Match",
+  description: "Find your perfect haven",
 };
 
 const font = Nunito({
