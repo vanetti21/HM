@@ -8,7 +8,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 
 export const metadata = {
   title: "Haven Match",
-  description: "Alojamientos",
+  description: "Find your perfect haven",
 };
 
 const font = Nunito({
