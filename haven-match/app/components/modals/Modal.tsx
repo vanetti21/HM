@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 
@@ -11,7 +11,7 @@ interface ModalProps {
     title?: string;
     body?: React.ReactElement;
     footer?: React.ReactElement;
-    actionLabel:  string;
+    actionLabel: string;
     disabled?: boolean;
     secondaryAction?: () => void;
     secondaryActionLabel?: string;
@@ -46,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
         }, 300);
     }, [disabled, onClose]);
 
-    const handleSubmit = useCallback (()=> {
+    const handleSubmit = useCallback(()=> {
         if(disabled){
             return;
         }
@@ -70,17 +70,17 @@ const Modal: React.FC<ModalProps> = ({
         <>
             <div 
             className="
-            justify-center
-            items-center
-            flex
-            overflow-x-hidden
-            overflow-y-auto
-            fixed
-            inset-0
-            z-50
-            outline-none
-            focus:outline-none
-            bg-neutral-800/70
+                justify-center
+                items-center
+                flex
+                overflow-x-hidden
+                overflow-y-auto
+                fixed
+                inset-0
+                z-50
+                outline-none
+                focus:outline-none
+                bg-neutral-800/70
             "
             >
 
@@ -141,12 +141,12 @@ const Modal: React.FC<ModalProps> = ({
                             <button
                                 onClick={handleClose}
                                 className="
-                                p-1
-                                border-0
-                                hover:opacity-70
-                                transition
-                                absolute
-                                left-9
+                                    p-1
+                                    border-0
+                                    hover:opacity-70
+                                    transition
+                                    absolute
+                                    left-9
                                 "
                             >
                                 <IoMdClose size={18} />
@@ -170,19 +170,19 @@ const Modal: React.FC<ModalProps> = ({
                                 w-full
                                 "
                             >
-                            {secondaryAction && secondaryActionLabel && ( 
+                                {secondaryAction && secondaryActionLabel && ( 
+                                    <Button 
+                                        outline
+                                        disabled={disabled}
+                                        label={secondaryActionLabel}
+                                        onClick={handleSecondaryAction}
+                                    />
+                                )}
                                 <Button 
-                                    outline
                                     disabled={disabled}
-                                    label={secondaryActionLabel}
-                                    onClick={handleSecondaryAction}
+                                    label={actionLabel}
+                                    onClick={handleSubmit}
                                 />
-                            )}
-                            <Button 
-                                disabled={disabled}
-                                label={actionLabel}
-                                onClick={handleSubmit}
-                            />
                             </div>
                             {footer}
                         </div>
