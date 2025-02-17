@@ -73,7 +73,7 @@ const Search = () => {
                         text-white
                         "
                     >
-                      <BiSearch size= {18}/>  
+                        <BiSearch size= {18}/>  
                     </div>
                 </div>
                 
