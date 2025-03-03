@@ -120,7 +120,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                                 />
                                 <MenuItem
                                     onClick={rentModal.onOpen}
-                                    label="Match Haven my home"
+                                    label="Match your haven"
                                 />
                                 <hr />
                                 <MenuItem
