@@ -7,7 +7,7 @@ import useRentModal from "@/app/hooks/UseRentModal";
 
 import Modal from "./Modal";
 import Heading from "../Heading";
-import { categories } from "../Navbar/Categories";
+import { categories } from "../navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
