@@ -10,6 +10,7 @@ import RentModal from "./components/modals/RentModal";
 
 import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
+import SearchModal from "./components/modals/SearchModal";
 
 export const metadata = {
   title: "Haven Match",
@@ -32,6 +33,7 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider/>
+          <SearchModal/>
           <RentModal/>
           <LoginModal/>
           <RegisterModal/>
