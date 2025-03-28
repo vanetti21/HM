@@ -11,7 +11,9 @@ export interface IListingParams {
    category?: string;
 }
 
-export default async function getListings(params: IListingParams) {
+export default async function getListings(
+   params: IListingParams
+) {
    try {
       const {
          userId,
@@ -23,6 +25,7 @@ export default async function getListings(params: IListingParams) {
          locationValue,
          category,
       } = params;
+
       let query: any = {};
 
       if (userId) {
@@ -75,6 +78,7 @@ export default async function getListings(params: IListingParams) {
          where: query,
          orderBy: { createdAt: "desc" },
       });
+      
       const safeListings = listings.map((listing) => ({
          ...listing,
          createdAt: listing.createdAt.toISOString(),
