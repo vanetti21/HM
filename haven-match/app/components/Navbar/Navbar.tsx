@@ -1,6 +1,7 @@
 'use client';
 
 import Container from "../Container";
+import ImageSlider from "../inputs/ImageSlider";
 import Categories from "./Categories";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -16,11 +17,12 @@ const Navbar: React.FC<NavbarProps> = ({
     currentUser
 }) => {
     return (
-        <div className="fixed w-full h-16 bg-white z-10 shadow-sm">
+        <div className="fixed w-full h-25 bg-white z-10 shadow-sm">
             <div
                 className="
                 py-4
-                border-b-[1px]"
+                border-b-[1px]
+                bg-[#34495e]"
             >
                 <Container>
                     <div
@@ -35,12 +37,13 @@ const Navbar: React.FC<NavbarProps> = ({
                     >
                         
                     <Logo/>
-                    <Search/>
+                    
                     <UserMenu currentUser={currentUser}/>
                     </div>
                 </Container>
             </div>
-            <Categories />
+                <Categories />
+            
         </div>
     );
 };
