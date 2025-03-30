@@ -48,11 +48,12 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         hidden
                         md:block
                         text-sm
+                        text-white
                         font-semibold
                         py-3
                         px-4
                         rounded-full
-                        hover:bg-neutral-100
+                        hover:bg-[#22313f]
                         transition
                         cursor-pointer
                     "
@@ -73,7 +74,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         gap-3
                         rounded-full
                         cursor-pointer
-                        hover:shadow-md
+                        hover:bg-[#22313f]
                         transition
                     "
                 >
@@ -93,14 +94,14 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         shadow-md
                         w-[40vw]
                         md:w-3/4
-                        bg-white
+                        bg-[white]
                         overflow-hidden
                         right-0
                         top-12
                         text-sm
                     "
                 >
-                    <div className="flex flex-col cursor-pointer">
+                    <div className="flex flex-col cursor-pointer ">
                         {currentUser ? (
                             <>
                                 <MenuItem

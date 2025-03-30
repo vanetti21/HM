@@ -17,7 +17,7 @@ import {
     GiPalmTree, 
     GiWindmill 
 } from "react-icons/gi";
-import { MdHotel, MdOutlineVilla, MdPets } from "react-icons/md";
+import { MdHotel, MdOutlineVilla, MdPets, MdCabin  } from "react-icons/md";
 import CategoryBox from "../CategoryBox";
 import { usePathname, useSearchParams } from "next/navigation";
 import { FaSkiing } from "react-icons/fa";
@@ -26,94 +26,89 @@ import { IoDiamond } from "react-icons/io5";
 
 export const categories = [
     {
-        label: 'Beach',
+        label: 'Playa',
         icon: TbBeach,
-        description: 'This property is close to the beach!'
+        description: 'Esta propiedad está cerca de la playa.!'
     },
     {
-        label: 'Windmills',
+        label: 'Molinos de viento',
         icon: GiWindmill,
-        description: 'This property has windmills!'
+        description: 'Esta propiedad tiene molinos de viento.!'
     },
     {
         label: 'Modern',
         icon: MdOutlineVilla,
-        description: 'This property is modern!'
+        description: 'Esta propiedad es moderna.!'
     },
     {
-        label: 'Countryside',
+        label: 'Campo',
         icon: TbMountain,
-        description: 'This property is in the countryside!'
+        description: 'Esta propiedad está en el campo.!'
     },
     {
-        label: 'Pools',
+        label: 'Piscina',
         icon: TbPool,
-        description: 'This property has a pool!'
+        description: 'Esta propiedad tiene piscina.!'
     },
     {
-        label: 'Island',
+        label: 'Isla',
         icon: GiIsland,
-        description: 'This property is on an island!'
+        description: 'Esta propiedad está en una isla.!'
     },
     {
-        label: 'Lake',
+        label: 'Lago',
         icon: GiBoatFishing,
-        description: 'This property is close to a lake!'
+        description: 'Esta propiedad está cerca de un lago.!'
     },
     {
-        label: 'Skiing',
+        label: 'Esquiar',
         icon: FaSkiing,
-        description: 'This property has skiing activities!'
+        description: 'Esta propiedad tiene actividades de esquí.!'
     },
     {
-        label: 'Castles',
-        icon: GiCastle,
-        description: 'This property is in a castle!'
+        label: 'Cabaña',
+        icon: MdCabin ,
+        description: 'Esta propiedad es una cabaña.!'
     },
     {
-        label: 'Camping',
+        label: 'Campamento',
         icon: GiForestCamp,
-        description: 'This property has camping activities!'
+        description: 'Esta propiedad tiene actividades de camping.!'
     },
     {
-        label: 'Artic',
+        label: 'Artico',
         icon: BsSnow,
-        description: 'This property is in the snow!'
+        description: 'Esta propiedad está en la nieve.!'
     },
     {
-        label: 'Cave',
+        label: 'Cueva',
         icon: GiCaveEntrance,
-        description: 'This property is in a cave!'
+        description: 'Esta propiedad está en una cueva.!'
     },
     {
-        label: 'Desert',
+        label: 'Desierto',
         icon: GiCactus,
-        description: 'This property is in the desert!'
+        description: 'Esta propiedad está en el desierto.!'
     },
     {
-        label: 'Barns',
-        icon: GiBarn,
-        description: 'This property is in the barn!'
-    },
-    {
-        label: 'Lux',
+        label: 'Lujosa',
         icon: IoDiamond,
-        description: 'This property is luxurios!'
+        description: 'Esta propiedad es lujosa.!'
     },
     {
         label: 'Hotel',
         icon: MdHotel,
-        description: 'This property is an hotel!'
+        description: 'Esta propiedad está en un hotel.!'
     },
     {
         label: 'Resort',
         icon: GiPalmTree,
-        description: 'This property is a resort!'
+        description: 'Esta propiedad está en un resort!'
     },
     {
         label: 'Pet-Friendly',
         icon: MdPets,
-        description: 'This property is pet-friendly!'
+        description: 'En esta propiedad se admiten mascotas!'
     },
 ]
 
