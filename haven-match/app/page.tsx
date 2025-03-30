@@ -13,7 +13,19 @@ interface HomeProps {
 }
 
 const Home = async ({ searchParams }: HomeProps) => {
-   const listings = await getListings(searchParams);
+   const params = await Promise.resolve(searchParams || {}); // ✅ Asegurar que searchParams está disponible
+
+   const listings = await getListings({
+      userId: params.userId,
+      roomCount: params.roomCount ? Number(params.roomCount) : undefined,
+      guestCount: params.guestCount ? Number(params.guestCount) : undefined,
+      bathroomCount: params.bathroomCount ? Number(params.bathroomCount) : undefined,
+      startDate: params.startDate,
+      endDate: params.endDate,
+      locationValue: params.locationValue,
+      category: params.category,
+   });
+
    const currentUser = await getCurrentUser();
 
    if (listings.length === 0) {
@@ -26,6 +38,7 @@ const Home = async ({ searchParams }: HomeProps) => {
    return (
       <ClientOnly>
          <Container>
+
             {/* Image Slider */}
             <div className="max-w-[3000px] h-[780px] w-full m-auto relative mt-6 pb-10">
                {/* ImageSlider */}
@@ -43,6 +56,7 @@ const Home = async ({ searchParams }: HomeProps) => {
                   <div key={listing.id}>
                      <ListingCard data={listing} currentUser={currentUser} />
                   </div>
+
                ))}
             </div>
          </Container>
