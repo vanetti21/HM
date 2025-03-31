@@ -4,6 +4,7 @@ import getListings, { IListingParams } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
+import Footer from "./components/Footer";
 import ImageSlider from "./components/inputs/ImageSlider";
 import ListingCard from "./components/listings/ListingCard";
 import Search from "./components/navbar/Search";
@@ -60,6 +61,10 @@ const Home = async ({ searchParams }: HomeProps) => {
                ))}
             </div>
          </Container>
+         <div className="flex flex-col">
+         
+         <Footer />
+         </div>
       </ClientOnly>
    );
    
