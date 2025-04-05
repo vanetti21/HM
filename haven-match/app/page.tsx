@@ -60,12 +60,8 @@ const Home = async ({ searchParams }: HomeProps) => {
 
                ))}
             </div>
-         </Container>
-         <div className="flex flex-col">
-         
-         <Footer />
-         </div>
-      </ClientOnly>
+         </Container>    
+      </ClientOnly>    
    );
    
    

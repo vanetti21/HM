@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
@@ -56,7 +58,7 @@ const Footer = () => {
                 </ul>
             </div>
         </div>
-        <div className="border-t border-gray-500 pt-6 text-gray-300 text-center mt-5">
+        <div className="border-t border-gray-500 pt-4 text-gray-300 text-center mt-4">
             <p>© 2025 Haven Match. All Rights Reserved.</p>
         </div>
     </footer>
