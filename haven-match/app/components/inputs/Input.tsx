@@ -1,11 +1,10 @@
 'use client';
 
-import { format } from "path";
 import { 
     FieldErrors,
     FieldValues,
     UseFormRegister 
-}    from "react-hook-form";
+} from "react-hook-form";
 import { BiDollar } from "react-icons/bi";
 
 interface InputProps {
@@ -18,6 +17,7 @@ interface InputProps {
     register: UseFormRegister<FieldValues>
     errors: FieldErrors
 }
+
 const Input: React.FC<InputProps> = ({
     id,
     label,
@@ -32,37 +32,33 @@ const Input: React.FC<InputProps> = ({
         <div className="w-full relative">
             {formatPrice && (
                 <BiDollar
-                size={24}
-                className="
-                text-neutral-700
-                absolute
-                top-5
-                left-2"
+                    size={24}
+                    className="text-neutral-700 absolute top-5 left-2"
                 />
             )}
             <input
-            id={id}
-            disabled={disabled}
-            {...register(id, { required })}
-            placeholder=" "
-            type={type}
-            className={`
-                peer
-                w-full
-                p-4
-                pt-6
-                font-light
-                bg-white
-                border-2
-                rounded-md
-                outline-none
-                transition 
-                disabled:opacity-70
-                disabled:cursor-not-allowed
-                ${formatPrice ? 'pl-9' : 'pl-4'}
-                ${errors[id] ? 'border-[#22313f]' : 'border-neutral-300'}
-                ${errors[id] ? 'focus:border-[#22313f]' : 'focus:border-black'}
-            `}
+                id={id}
+                disabled={disabled}
+                {...register(id, { required })}
+                placeholder=" "
+                type={type}
+                className={`
+                    peer
+                    w-full
+                    p-4
+                    pt-6
+                    font-light
+                    bg-white
+                    border-2
+                    rounded-md
+                    outline-none
+                    transition 
+                    disabled:opacity-70
+                    disabled:cursor-not-allowed
+                    ${formatPrice ? 'pl-9' : 'pl-4'}
+                    ${errors[id] ? 'border-[#22313f]' : 'border-neutral-300'}
+                    ${errors[id] ? 'focus:border-[#22313f]' : 'focus:border-black'}
+                `}
             />
             <label
                 className={`
@@ -83,6 +79,13 @@ const Input: React.FC<InputProps> = ({
                 `}>
                 {label}
             </label>
+
+            {/* 🔽 Aquí mostramos el mensaje de error si lo hay */}
+            {errors[id]?.message && (
+                <p className="text-red-500 text-sm mt-1 ml-1">
+                    {errors[id]?.message?.toString()}
+                </p>
+            )}
         </div>
     );
 }

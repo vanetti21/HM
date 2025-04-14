@@ -107,10 +107,10 @@ const SearchModal = () => {
 
    const actionLabel = useMemo(() => {
       if (step === STEPS.INFO) {
-         return "Search";
+         return "Buscar";
       }
 
-      return "Next";
+      return "Siguiente";
    }, [step]);
 
    const secondaryActionLabel = useMemo(() => {
@@ -118,7 +118,7 @@ const SearchModal = () => {
          return undefined;
       }
 
-      return "Back";
+      return "Atrás";
    }, [step]);
 
    let bodyContent = (

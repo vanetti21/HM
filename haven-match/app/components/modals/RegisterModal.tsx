@@ -5,9 +5,9 @@ import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
 import { useCallback, useState } from 'react';
 import {
-    FieldValues,
-    SubmitHandler,
-    useForm
+  FieldValues,
+  SubmitHandler,
+  useForm
 } from 'react-hook-form';
 
 import useRegisterModal from '@/app/hooks/UseRegisterModal';
@@ -18,137 +18,142 @@ import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { signIn } from 'next-auth/react';
-import { BsToggles2 } from 'react-icons/bs';
-
 
 const RegisterModal = () => {
-    const registerModal = useRegisterModal();
-    const loginModal = useLoginModal();
-    const [isLoading, setIsLoading] = useState(false);
+  const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
+  const [isLoading, setIsLoading] = useState(false);
 
-    const {
-        register,
-        handleSubmit,
-        formState: {
-            errors,
-        }
-    } = useForm<FieldValues>({
-        defaultValues: {
-            name: '',
-            email: '',
-            password: ''
-        }
-    })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<FieldValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: ''
+    }
+  });
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsLoading(true);
 
-        axios.post('/api/register', data)
-            .then(() => {
-                toast.success('Success!')
-                registerModal.onClose();
-                loginModal.onOpen();
-            })
-            .catch((error) => {
-                toast.error('Something went wrong.');
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
+    // Validación extra: formato del email (aunque react-hook-form también lo hace)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      toast.error('Formato de correo inválido');
+      setError('email', { type: 'manual', message: 'Formato de correo inválido' });
+      setIsLoading(false);
+      return;
     }
 
-    const toggle = useCallback(() => {
-        registerModal.onClose();
-        loginModal.onOpen();
-    }, [loginModal, registerModal]);
+    try {
+      // Verificamos si el correo ya está registrado
+      const res = await axios.post('/api/check-email', { email: data.email });
 
-    const bodyContent = (
-        <div className="flex flex-col gap-4">
-            <Heading
-                title="Bienvenido a Haven Match"
-                subtitle="Create an account!"
-            />
-            <Input 
-                id="email"
-                label="Email"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-            <Input 
-                id="name"
-                label="Name"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-            <Input 
-                id="password"
-                type="password"
-                label="Password"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-        </div>
-    );
+      if (res.data.exists) {
+        toast.error('Este correo ya está registrado');
+        setError('email', { type: 'manual', message: 'Correo ya registrado' });
+        setIsLoading(false);
+        return;
+      }
 
-    const footerContent = (
-        <div className="flex flex-col gap-4 mt-3">
-            <hr />
-            <Button
-                outline
-                label="Continue with Google"
-                icon={FcGoogle}
-                onClick={() => signIn('google')}
-            />
-            <Button
-                outline
-                label="Continue with Github"
-                icon={AiFillGithub}
-                onClick={() => signIn('github')}
-            />
-            <div
-                className="
-                text-neutral-500
-                text-center
-                mt-4
-                font-light"
-            >
-                <div className="
-                justify-center flex flex-row items-center gap-2">
-                    <div>
-                    Already have an account?
-                    </div>
-                    <div
-                    onClick={toggle}
-                        className="
-                            text-neutral-800
-                            cursor-pointer
-                            hover:underline"
-                    >
-                    Log in
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+      // Continuamos con el registro
+      await axios.post('/api/register', data);
+      toast.success('¡Registro exitoso!');
+      registerModal.onClose();
+      loginModal.onOpen();
 
-    return (
-    <Modal 
+    } catch (error) {
+      toast.error('Ocurrió un error al registrarse.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
+
+  const bodyContent = (
+    <div className="flex flex-col gap-4">
+      <Heading
+        title="Bienvenido a Haven Match"
+        subtitle="¡Crea una cuenta!"
+      />
+      <Input 
+        id="email"
+        label="Correo electrónico"
         disabled={isLoading}
-        isOpen={registerModal.isOpen}
-        title="Register"
-        actionLabel="Continue"
-        onClose={registerModal.onClose}
-        onSubmit={handleSubmit(onSubmit)}
-        body={bodyContent}
-        footer={footerContent}
+        register={register}
+        errors={errors}
+        required
+        />
+
+      <Input 
+        id="name"
+        label="Nombre"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+      <Input 
+        id="password"
+        type="password"
+        label="Contraseña"
+        disabled={isLoading}
+        register={register}
+        errors={errors}
+        required
+      />
+    </div>
+  );
+
+  const footerContent = (
+    <div className="flex flex-col gap-4 mt-3">
+      <hr />
+      <Button
+        outline
+        label="Continuar con Google"
+        icon={FcGoogle}
+        onClick={() => signIn('google')}
+      />
+      <Button
+        outline
+        label="Continuar con Github"
+        icon={AiFillGithub}
+        onClick={() => signIn('github')}
+      />
+      <div className="text-neutral-500 text-center mt-4 font-light">
+        <div className="justify-center flex flex-row items-center gap-2">
+          <div>¿Ya tienes una cuenta?</div>
+          <div
+            onClick={toggle}
+            className="text-neutral-800 cursor-pointer hover:underline"
+          >
+            Iniciar sesión
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <Modal 
+      disabled={isLoading}
+      isOpen={registerModal.isOpen}
+      title="Registrarse"
+      actionLabel="Continuar"
+      onClose={registerModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
+      footer={footerContent}
     />
-    );
-}
+  );
+};
 
 export default RegisterModal;

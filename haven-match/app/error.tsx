@@ -11,7 +11,7 @@ const ErrorState: React.FC<ErrorStateProps> = ({ error }) => {
    useEffect(() => {
       console.error(error);
    }, [error]);
-   return <EmptyState title="Oh oh" subtitle="Something went wrong" />;
+   return <EmptyState title="Oh oh" subtitle="Algo salió mal" />;
 };
 
 export default ErrorState;
