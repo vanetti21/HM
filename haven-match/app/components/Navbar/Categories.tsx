@@ -26,91 +26,91 @@ import { IoDiamond } from "react-icons/io5";
 
 export const categories = [
     {
-        label: 'Playa',
+        label: 'Beach',
         icon: TbBeach,
-        description: 'Esta propiedad está cerca de la playa.!'
+        description: 'This property is close to the beach!'
     },
     {
-        label: 'Molinos de viento',
+        label: 'Windmills',
         icon: GiWindmill,
-        description: 'Esta propiedad tiene molinos de viento.!'
+        description: 'This property has windmills!'
     },
     {
         label: 'Modern',
         icon: MdOutlineVilla,
-        description: 'Esta propiedad es moderna.!'
+        description: 'This property is modern!'
     },
     {
-        label: 'Campo',
+        label: 'Countryside',
         icon: TbMountain,
-        description: 'Esta propiedad está en el campo.!'
+        description: 'This property is in the countryside!'
     },
     {
-        label: 'Piscina',
+        label: 'Pool',
         icon: TbPool,
-        description: 'Esta propiedad tiene piscina.!'
+        description: 'This property has a pool!'
     },
     {
-        label: 'Isla',
+        label: 'Island',
         icon: GiIsland,
-        description: 'Esta propiedad está en una isla.!'
+        description: 'This property is on an island!'
     },
     {
-        label: 'Lago',
+        label: 'Lake',
         icon: GiBoatFishing,
-        description: 'Esta propiedad está cerca de un lago.!'
+        description: 'This property is near a lake!'
     },
     {
-        label: 'Esquiar',
+        label: 'Skiing',
         icon: FaSkiing,
-        description: 'Esta propiedad tiene actividades de esquí.!'
+        description: 'This property has skiing activities!'
     },
     {
-        label: 'Cabaña',
-        icon: MdCabin ,
-        description: 'Esta propiedad es una cabaña.!'
+        label: 'Cabin',
+        icon: MdCabin,
+        description: 'This property is a cabin!'
     },
     {
-        label: 'Campamento',
+        label: 'Camping',
         icon: GiForestCamp,
-        description: 'Esta propiedad tiene actividades de camping.!'
+        description: 'This property has camping activities!'
     },
     {
-        label: 'Artico',
+        label: 'Arctic',
         icon: BsSnow,
-        description: 'Esta propiedad está en la nieve.!'
+        description: 'This property is in the snow!'
     },
     {
-        label: 'Cueva',
+        label: 'Cave',
         icon: GiCaveEntrance,
-        description: 'Esta propiedad está en una cueva.!'
+        description: 'This property is in a cave!'
     },
     {
-        label: 'Desierto',
+        label: 'Desert',
         icon: GiCactus,
-        description: 'Esta propiedad está en el desierto.!'
+        description: 'This property is in the desert!'
     },
     {
-        label: 'Lujosa',
+        label: 'Luxury',
         icon: IoDiamond,
-        description: 'Esta propiedad es lujosa.!'
+        description: 'This property is luxurious!'
     },
     {
         label: 'Hotel',
         icon: MdHotel,
-        description: 'Esta propiedad está en un hotel.!'
+        description: 'This property is in a hotel!'
     },
     {
         label: 'Resort',
         icon: GiPalmTree,
-        description: 'Esta propiedad está en un resort!'
+        description: 'This property is in a resort!'
     },
     {
         label: 'Pet-Friendly',
         icon: MdPets,
-        description: 'En esta propiedad se admiten mascotas!'
+        description: 'Pets are allowed in this property!'
     },
-]
+];
 
     const Categories = () => {
     const params = useSearchParams();

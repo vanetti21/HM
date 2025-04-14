@@ -58,11 +58,12 @@ const UserMenu: React.FC<UserMenuProps> = ({
                         cursor-pointer
                     "
                 >
-                    Match your haven
+                    Create your haven
                 </div>
                 <div
                     onClick={toggleOpen}  
                     className="
+                        text-white
                         p-4
                         md:py-1
                         md:px-2
@@ -106,23 +107,23 @@ const UserMenu: React.FC<UserMenuProps> = ({
                             <>
                                 <MenuItem
                                     onClick={() => router.push("/trips")}
-                                    label="Viajes"
+                                    label="My trips"
                                 />
                                 <MenuItem
                                     onClick={() => {router.push("/favorites")}}
-                                    label="Favoritos"
+                                    label="Favorites"
                                 />
                                 <MenuItem
                                     onClick={() => {router.push("/reservations")}}
-                                    label="Reservaciones"
+                                    label="Reservations"
                                 />
                                 <MenuItem
                                     onClick={() => {router.push("/properties")}}
-                                    label="Propiedades"
+                                    label="Properties"
                                 />
                                 <MenuItem
                                     onClick={rentModal.onOpen}
-                                    label="Match your haven"
+                                    label="Create your haven"
                                 />
                                 <hr />
                                 <MenuItem

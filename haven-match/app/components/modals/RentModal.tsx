@@ -277,7 +277,7 @@ const RentModal = () => {
             actionLabel={actionLabel}
             secondaryActionLabel={secondaryActionLabel}
             secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-            title="Match your haven"
+            title="Create your haven"
             body={bodyContent}
         />
     );

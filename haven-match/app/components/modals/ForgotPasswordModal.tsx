@@ -60,8 +60,8 @@ const ForgotPasswordModal = () => {
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
-        title="¿Olvidaste tu contraseña?"
-        subtitle="Te enviaremos un enlace para restablecerla"
+        title="Forgot your password?"
+        subtitle="We'll send you a link to reset it."
       />
       <Input
         id="email"
@@ -75,7 +75,7 @@ const ForgotPasswordModal = () => {
       {resetLink && (
         <div className="mt-4 bg-gray-100 p-3 rounded text-sm break-all">
           <strong>Link de recuperación:</strong><br />
-          <a href={resetLink} className="text-blue-600 underline" target="_blank">
+          <a href={resetLink} className="text-blue-900 underline" target="_blank">
             {resetLink}
           </a>
         </div>
@@ -87,8 +87,8 @@ const ForgotPasswordModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={forgotPasswordModal.isOpen}
-      title="Recuperar contraseña"
-      actionLabel="Enviar enlace"
+      title="Reset password"
+      actionLabel="Get Link"
       onClose={forgotPasswordModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}

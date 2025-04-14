@@ -72,12 +72,12 @@ const ListingClient: React.FC<ListingClientProps> = ({
             listingId: listing?.id
         })
         .then(() => {
-            toast.success('Listing reserved!');
+            toast.success('Go to payment!');
             setDateRange(initialDateRange);
-            router.push('/trips');
+            router.push(`/payments?amount=${totalPrice}`);
         })
         .catch(() => {
-            toast.error('Algo salió mal.');
+            toast.error('Something went wrong.');
         })
         .finally(() => {
             setIsLoading(false);

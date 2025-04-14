@@ -73,7 +73,7 @@ const LoginModal = () => {
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading
-                title="Bienvenido de nuevo"
+                title="Welcome back!"
                 subtitle="Login to your account!"
             />
             <Input 
@@ -99,7 +99,7 @@ const LoginModal = () => {
                     onClick={forgotPasswordModal.onOpen}    
                     className="cursor-pointer hover:underline text-neutral-800"
                 >
-                    ¿Olvidaste tu contraseña?
+                    Forgot your password?
                 </span>
             </div>
         </div>
