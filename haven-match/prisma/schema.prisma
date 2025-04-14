@@ -16,6 +16,7 @@ datasource db {
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String?
+  password  String?
   email String? @unique
   emailVerified DateTime?
   image String?
@@ -71,14 +72,15 @@ model Listing {
 
 
 model Reservation {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @db.ObjectId
-  listingId String @db.ObjectId
-  startDate DateTime
-  endDate DateTime
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  listingId  String   @db.ObjectId
+  startDate  DateTime
+  endDate    DateTime
   totalPrice Int
-  createdAt DateTime @default(now())
+  rating     Int?     // Aquí agregas el campo rating
+  createdAt  DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete:Cascade)
-  listing Listing @relation(fields: [listingId], references: [id], onDelete:Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }

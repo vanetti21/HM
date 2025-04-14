@@ -25,4 +25,6 @@ export type SafeUser = Omit<
         updatedAt: string;
         emailVerified: string | null;
     };
+
+export { Reservation, Listing };
     

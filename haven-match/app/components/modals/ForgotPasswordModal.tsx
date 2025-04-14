@@ -30,14 +30,12 @@ const ForgotPasswordModal = () => {
 
       // El backend retorna un enlace simulado, lo mostramos en la UI
       if (response.data?.link) {
-        toast.success('Revisa el enlace generado abajo');
+        toast.success('Revisa el enlace');
         setResetLink(response.data.link);
       } else {
         toast.success('Revisa tu correo para restablecer');
       }
 
-      // También podés cerrar el modal automáticamente si querés
-      // forgotPasswordModal.onClose();
     } catch (error) {
       toast.error('No se pudo enviar el correo');
     } finally {

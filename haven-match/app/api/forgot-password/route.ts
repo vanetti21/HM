@@ -1,29 +1,28 @@
-import { NextResponse } from "next/server";
-import prisma from "@/app/libs/prismadb";
+import { NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+import prisma from '@/app/libs/prismadb';
 
-// Usamos crypto para generar un token único simulado
-import crypto from "crypto";
+export async function POST(req: Request) {
+  const { email } = await req.json();
 
-export async function POST(request: Request) {
-  const { email } = await request.json();
-
-  const user = await prisma.user.findUnique({
-    where: { email }
-  });
-
-  if (!user) {
-    return NextResponse.json({ message: "Usuario no encontrado" }, { status: 404 });
+  if (!email) {
+    return NextResponse.json({ error: 'Email es requerido' }, { status: 400 });
   }
 
-  // Simulamos un token único
-  const token = email; // Para simulación usamos el email como token
-  const link = `http://localhost:3000/reset-password?token=${encodeURIComponent(token)}`;
+  const user = await prisma.user.findUnique({ where: { email } });
 
-  // Simulamos que enviamos el correo, pero lo mostramos en la UI
-  console.log(`[SIMULADO] Enviar correo a ${email} con link: ${link}`);
+  if (!user) {
+    return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 404 });
+  }
 
+  const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET_KEY!, {
+    expiresIn: '1h',
+  });
+
+  const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+  
   return NextResponse.json({
-    message: "Correo enviado",
-    link // llega al frontend
+    message: 'Link de restablecimiento generado',
+    link: resetLink,
   });
 }

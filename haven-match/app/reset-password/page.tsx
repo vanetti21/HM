@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -13,19 +13,26 @@ export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async () => {
+  useEffect(() => {
     if (!token) {
-      toast.error("Invalid token");
+      toast.error("Token no válido");
+      router.push("/"); // Redirige a la página principal si no hay token
+    }
+  }, [token]);
+
+  const handleSubmit = async () => {
+    if (!token || !password) {
+      toast.error("Token y contraseña son requeridos");
       return;
     }
 
     setIsSubmitting(true);
     try {
       await axios.post("/api/reset-password", { token, password });
-      toast.success("Password updated successfully");
-      router.push("/"); 
+      toast.success("Contraseña actualizada exitosamente");
+      router.push("/"); // Redirige al inicio después de actualizar la contraseña
     } catch (error) {
-      toast.error("Error updating password");
+      toast.error("Error al actualizar la contraseña");
     } finally {
       setIsSubmitting(false);
     }
@@ -48,7 +55,7 @@ export default function ResetPasswordPage() {
         <button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className=" hover:bg-blue-950 transition-colors text-white px-6 py-2 rounded-md font-semibold disabled:opacity-50"
+          className="hover:bg-blue-950 transition-colors text-white px-6 py-2 rounded-md font-semibold disabled:opacity-50"
         >
           {isSubmitting ? "Updating..." : "Change Password"}
         </button>
