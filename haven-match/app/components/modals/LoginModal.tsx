@@ -19,12 +19,14 @@ import Input from '../inputs/Input';
 import { toast } from 'react-hot-toast';
 import Button from '../Button';
 import { useRouter } from 'next/navigation';
+import useForgotPasswordModal from '@/app/hooks/useForgotPasswordModal';
 
 const LoginModal = () => {
     const router = useRouter();
 
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+    const forgotPasswordModal = useForgotPasswordModal();  // Aquí lo estamos usando correctamente.
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -91,6 +93,15 @@ const LoginModal = () => {
                 errors={errors}
                 required
             />
+
+            <div className="text-center text-neutral-500 text-sm mt-2">
+                <span
+                    onClick={forgotPasswordModal.onOpen}    
+                    className="cursor-pointer hover:underline text-neutral-800"
+                >
+                    ¿Olvidaste tu contraseña?
+                </span>
+            </div>
         </div>
     );
 

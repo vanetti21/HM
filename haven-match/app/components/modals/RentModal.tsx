@@ -100,7 +100,7 @@ const RentModal = () => {
             rentModal.onClose();
         })
         .catch(() => {
-            toast.error('Something went wrong');
+            toast.error('Algo salió mal'); 
         }).finally(() => {
             setIsLoading(false);
         })
@@ -108,17 +108,17 @@ const RentModal = () => {
 
     const actionLabel = useMemo(() => {
         if (step === STEPS.PRICE) {
-            return 'Create';
+            return 'Crear';
         }
 
-        return 'Next';
+        return 'Siguiente';
     }, [step])
 
     const secondaryActionLabel = useMemo(() => {
         if (step === STEPS.CATEGORY) {
             return undefined;
         }
-        return 'Back';
+        return 'Atrás';
     }, [step]);
 
     let bodyContent = (

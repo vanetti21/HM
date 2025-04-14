@@ -12,6 +12,7 @@ import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import SearchModal from "./components/modals/SearchModal";
 import Footer from "./components/Footer";
+import ForgotPasswordModal from "./components/modals/ForgotPasswordModal";
 
 export const metadata = {
   title: "Haven Match",
@@ -37,13 +38,13 @@ export default async function RootLayout({
           <SearchModal/>
           <RentModal/>
           <LoginModal/>
+          <ForgotPasswordModal />
           <RegisterModal/>
           <Navbar currentUser={currentUser}/>
         </ClientOnly>
         <div className="pt-28 pb-20">
           {children}
         </div>
-        <Footer/>
       </body>
     </html>
   );
